@@ -7,25 +7,24 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transaction;
 
-public class E6 {
+public class ejer02 {
 public static void main(String[] args) {
-	EntityManagerFactory emp=Persistence.createEntityManagerFactory("JPAnuevo");
+	EntityManagerFactory emp=Persistence.createEntityManagerFactory("jpa_m_n");
 	EntityManager em=emp.createEntityManager();
 	EntityTransaction transaccion=em.getTransaction();
 	transaccion.begin();
 	
-	TypedQuery<Alumno> consulta=em.createQuery("Select d from Alumno d where d.edad>:vedad", Alumno.class)
-		;
-	consulta.setParameter("vedad",20 );
-	List<Alumno> lista= consulta.getResultList();
-	for (Alumno alumno : lista) {
-		System.out.println(alumno);
-	}
-	
+	Alumno p=em.find(Alumno.class, "1");
+	Alumno m=em.find(Alumno.class, "2");
+	Curso c=em.find(Curso.class, "JAVA2");
+	c.remove(p);
+	c.remove(m);
 	transaccion.commit();
-	
 	em.close();
+	//clientes id(auto) nombre productos id(auto) nombre 
+	
 }
 
 }
