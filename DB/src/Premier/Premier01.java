@@ -107,8 +107,7 @@ public class Premier01 {
 			
 			for (int i = 0; i < jugadores_data.size(); i++) {
 				
-				System.out.println("insertando a :"+ jugadores_data.get(i)[0]);
-				
+				System.out.println("insertando a :"+ jugadores_data.get(i)[0]);	
 				sentencia.setString(1,String.valueOf(i) );
 				sentencia.setString(2,jugadores_data.get(i)[0] );
 				sentencia.setInt(3,Integer.valueOf(jugadores_data.get(i)[1]) );
